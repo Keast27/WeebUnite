@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
+//Basic Information For Each Room
 public class  RoomInfo
 {
     public string name;
@@ -29,14 +30,14 @@ public class RoomController : MonoBehaviour
         instance = this;
     }
 
-    void Start()
-    {
-        //LoadRoom("Start", 0, 0);
-        //LoadRoom("Empty", 1, 0);
-        //LoadRoom("Empty", -1, 0);
-        //LoadRoom("Empty", 0, 1);
-        //LoadRoom("Empty", 0, -1);
-    }
+    //void Start()
+    //{
+    //    LoadRoom("Start", 0, 0);
+    //    LoadRoom("Empty", 1, 0);
+    //    LoadRoom("Empty", -1, 0);
+    //    LoadRoom("Empty", 0, 1);
+    //    LoadRoom("Empty", 0, -1);
+    //}
 
     private void Update()
     {
@@ -45,17 +46,18 @@ public class RoomController : MonoBehaviour
 
     void UpdateRoomQueue()
     {
-        if (isLoadingRoom)
-        {
-            return;
-        }
+        //Break if Room is Currently Being Loaded
+        if (isLoadingRoom){return;}
 
+        //If All Rooms Have Been Spawned...
         if (loadRoomQueue.Count == 0)
         {
+            //And Boss Room Has Not Been Spawned, Spawn the Boss Room
             if (!spawnedBossRoom)
             {
                 StartCoroutine(SpawnBossRoom());
             }
+            //And Boss Room Has Been Spawned but Doors Have Not Been Updated, Update the Doors and Walls
             else if (spawnedBossRoom && !updatedRooms)
             {
                 GameObject[] replacmentWalls = GameObject.FindGameObjectsWithTag("ReplacementWall");
@@ -74,29 +76,26 @@ public class RoomController : MonoBehaviour
             return;
         }
 
+        //Load The Next Queued Room 
         currentLoadRoomData = loadRoomQueue.Dequeue();
         isLoadingRoom = true;
 
         StartCoroutine(LoadRoomRoutine(currentLoadRoomData));
     }
 
+    //Spawn Boss Room
     IEnumerator SpawnBossRoom()
     {
         spawnedBossRoom = true;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.5f); //Ensure that All Rooms are Finished Spawning
         if (loadRoomQueue.Count == 0)
         {
-            Room bossRoom = loadedRooms[loadedRooms.Count - 1];
-            int tempx = bossRoom.x;
-            int tempy = bossRoom.y;
-            //Room tempRoom = new Room(bossRoom.x, bossRoom.y);
-            Destroy(bossRoom.gameObject);
-            var roomToRemove = loadedRooms.Single(r => r.x == tempx && r.y == tempy);
-            loadedRooms.Remove(roomToRemove);
-            LoadRoom("End", tempx, tempy);
+            //SpawnBossBasedOnLastRoom();
+            SpawnBossBasedOnDistance();
         }
     }
 
+    //Add The New Room to The Load Queue
     public void LoadRoom(string name, int x, int y)
     {
         if (DoesRoomExist(x,y))
@@ -112,6 +111,7 @@ public class RoomController : MonoBehaviour
         loadRoomQueue.Enqueue(newRoomData);
     }
 
+    //Load up the Scene of the Room Type in the Given Position
     IEnumerator LoadRoomRoutine(RoomInfo info)
     {
         string roomName = currentWorldName + info.name;
@@ -124,6 +124,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
+    //Once a Room is Loaded, Register it (Keep Track of its Values)
     public void RegisterRoom(Room room)
     {
         //Check if a Room Already Exists Here
@@ -166,11 +167,54 @@ public class RoomController : MonoBehaviour
         return loadedRooms.Find(item => item.x == x && item.y == y);
     }
 
+    //Handle Player Switching Rooms
     public void OnPlayerEnterRoom(Room room)
     {
         CameraController.instance.currRoom = room;
         currentRoom = room;
     }
 
-    
+    private void SpawnBossBasedOnLastRoom()
+    {
+        //Load Boss Room in the Location of the Last Added Room and Delete the Empty Room Placed There
+        Room bossRoom = loadedRooms[loadedRooms.Count - 1];
+        int tempx = bossRoom.x;
+        int tempy = bossRoom.y;
+        //Room tempRoom = new Room(bossRoom.x, bossRoom.y);
+        Destroy(bossRoom.gameObject);
+        var roomToRemove = loadedRooms.Single(r => r.x == tempx && r.y == tempy);
+        loadedRooms.Remove(roomToRemove);
+        LoadRoom("End", tempx, tempy);
+    }
+
+    private void SpawnBossBasedOnDistance()
+    {
+        float dist = 0;
+        Room tempRoom = null;
+
+        //Find Furthest Room From Start
+        foreach (Room r in loadedRooms)
+        {
+            float temp = Mathf.Sqrt(Mathf.Pow(r.x, 2) + Mathf.Pow(r.y, 2));
+
+            if (temp >= dist)
+            {
+                dist = temp;
+                tempRoom = r;
+            }
+        }
+
+        //Spawn Boss in This Room's Location
+        Room bossRoom = tempRoom;
+        int tempx = bossRoom.x;
+        int tempy = bossRoom.y;
+        //Room tempRoom = new Room(bossRoom.x, bossRoom.y);
+        Destroy(bossRoom.gameObject);
+        var roomToRemove = loadedRooms.Single(r => r.x == tempx && r.y == tempy);
+        loadedRooms.Remove(roomToRemove);
+        LoadRoom("End", tempx, tempy);
+    }
+
+
+
 }

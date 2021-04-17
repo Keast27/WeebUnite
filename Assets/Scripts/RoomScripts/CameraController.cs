@@ -12,11 +12,6 @@ public class CameraController : MonoBehaviour
     {
         instance = this;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -24,6 +19,7 @@ public class CameraController : MonoBehaviour
         UpdatePosition();
     }
 
+    //Move Towards the Target Position
     void UpdatePosition()
     {
         if (currRoom == null)
@@ -36,6 +32,7 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * moveSpeedWhenRoomChange);
     }
 
+    //Get the Current Target Position
     Vector3 GetCameraTargetPosition()
     {
         if (currRoom == null)
@@ -49,6 +46,7 @@ public class CameraController : MonoBehaviour
         return targetPos;
     }
 
+    //Check if Scenes are Currently Switching
     public bool IsSwitchingScene()
     {
         return transform.position.Equals(GetCameraTargetPosition()) == false;

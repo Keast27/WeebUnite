@@ -9,10 +9,12 @@ public class DungeonGenerator : MonoBehaviour
 
     private void Start()
     {
+        //Genrate Room Locations Based on the Data Passed Throught he Inspector
         dungeonRooms = DungeonCrawlerController.GenerateDungeon(dungeonGenerationData);
         SpawnRooms(dungeonRooms);
     }
 
+    //Spawns the Rooms in the Given Locations
     private void SpawnRooms(IEnumerable<Vector2Int> rooms)
     {
         RoomController.instance.LoadRoom("Start", 0, 0);

@@ -10,7 +10,8 @@ public class DungeonCrawler : MonoBehaviour
     {
         Position = startPos;
     }
-
+    
+    //Moves the "Crawlers" in a Random Direction and Returns the New Room Location
     public Vector2Int Move(Dictionary<Direction, Vector2Int> directionMovementMap)
     {
         Direction toMove = (Direction)Random.Range(0, directionMovementMap.Count);

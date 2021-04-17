@@ -21,6 +21,7 @@ public class DungeonCrawlerController : MonoBehaviour
         {Direction.right, Vector2Int.right},
     };
 
+    //Generate the Randomized Room Locations Based on the Variables Assigned in DungeonGenerationData
     public static List<Vector2Int> GenerateDungeon(DungeonGenerationData dungeonData)
     {
         List<DungeonCrawler> dungeonCrawlers = new List<DungeonCrawler>();

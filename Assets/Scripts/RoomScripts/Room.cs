@@ -11,12 +11,6 @@ public class Room : MonoBehaviour
 
     private bool updatedDoors = false;
 
-    public Room(int x, int y)
-    {
-        x = x;
-        y = y;
-    }
-
     public Door leftDoor;
     public Door rightDoor;
     public Door topDoor;
@@ -27,16 +21,25 @@ public class Room : MonoBehaviour
 
     public List<Door> doors = new List<Door>();
 
+    //Basic Constructor
+    public Room(int x, int y)
+    {
+        x = x;
+        y = y;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //If There is No Room Controller Break
         if (RoomController.instance == null)
         {
-            Debug.Log("Wrong Scene");
+            Debug.Log("There is no Room Controller in this Scene");
             return;
         }
 
-        //Get All Doors for The Room
+        //Get All Doors for The Room and Assign it to the Matching Door Variable
         Door[] ds = GetComponentsInChildren<Door>();
         foreach (Door d in ds)
         {
@@ -60,11 +63,14 @@ public class Room : MonoBehaviour
             }
         }
 
+        //Register the Room's Values
         RoomController.instance.RegisterRoom(this);
     }
 
     void Update()
     {
+        //Since the Boss Spawns Later Than the Other Rooms, Its Doors Are Not Always Checked in Time
+        //So This Ensures that They Are Checked
         if (name.Contains("End") && !updatedDoors)
         {
             RemoveUnconnectedDoors();
@@ -159,7 +165,7 @@ public class Room : MonoBehaviour
         return null;
     }
 
-    //Helpful Gizmos
+    //Helpful Gizmos For Testing
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
