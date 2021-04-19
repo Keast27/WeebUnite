@@ -9,6 +9,7 @@ public class FanArtist : Enemy
     [SerializeField] protected float fireRate = 0.75f;
     [SerializeField] protected float fireCooldown = 0.75f;
     private float timer;
+    private float attackTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,14 @@ public class FanArtist : Enemy
     void Update()
     {
         base.Update();
+
+        attackTimer += Time.deltaTime;
+
+        if(attackTimer >= 2)
+        {
+            ShootProjectile();
+            attackTimer = 0f;
+        }
     }
 
     protected override void Attack()
@@ -42,7 +51,7 @@ public class FanArtist : Enemy
 
     }
 
-    void ShootProjectile()
+    public void ShootProjectile()
     {
         Vector2 projectileDirection = target.transform.position - transform.position;
         Projectile newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);

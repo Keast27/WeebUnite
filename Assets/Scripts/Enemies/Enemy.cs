@@ -154,7 +154,7 @@ public class Enemy : MonoBehaviour
             //move toward player
             Vector3 targetPosition = target.transform.position;
             targetPosition.z = transform.position.z;
-            rigidBody.velocity = ( targetPosition - transform.position).normalized * moveSpeed;
+            rigidBody.velocity = (targetPosition - transform.position).normalized * moveSpeed;
         }
        
     }

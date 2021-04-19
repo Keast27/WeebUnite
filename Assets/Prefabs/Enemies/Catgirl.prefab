@@ -48,9 +48,8 @@ MonoBehaviour:
   maxHealth: 20
   canMove: 1
   currFacingRight: 1
-  target: {fileID: 0}
-  currentState: 0
-  moveSpeed: 2
+  target: {fileID: 4627885651015001055, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
+  moveSpeed: 5
   attackRange: 1
   previousX: 0
   faceRight: 0
