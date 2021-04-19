@@ -22,17 +22,11 @@ public class Enemy : MonoBehaviour
 
     public Action onDeath;
 
-    protected enum State
-    {
-        Passive, // Idle/Walking around
-        Aggro, // Moving towards target
-        Attacking // Attacking target
-    }
 
     private Vector3 spawnLocal;
     [Header("Base Enemy Properties")]
     public GameObject target;
-    [SerializeField] protected State currentState;
+    //[SerializeField] protected State currentState;
 
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float attackRange;
@@ -45,6 +39,7 @@ public class Enemy : MonoBehaviour
     // Used for passive movement
     //[Movement(), SerializeField] protected Movement.Type moveType;
 
+    /*
     public bool CanMove
     {
         get => canMove;
@@ -61,6 +56,8 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+    */
 
     // Use this when adjusting health
     // Will kill entity when health is zero
@@ -83,6 +80,8 @@ public class Enemy : MonoBehaviour
 
         spawnLocal = transform.position;
         previousX = transform.position.x;
+
+        TryGetComponent(out rigidBody);
     }
     //protected virtual void Move() { }
     protected virtual void Attack() { }
@@ -140,17 +139,24 @@ public class Enemy : MonoBehaviour
     protected virtual void Update()
     {
         //Move();
-        Flip();
+        //Flip();
+        AggroMovement();
     }
 
-    protected bool InAttackRange()
+
+    //move toward player if in the same room
+    protected virtual void AggroMovement()
     {
-        if (!target)
-            return false;
+        if (target)
+        {
+            //Vector2 distance = target.transform.position - transform.position;
 
-        Vector2 distance = target.transform.position - transform.position;
-
-        return distance.magnitude <= attackRange;
+            //move toward player
+            Vector3 targetPosition = target.transform.position;
+            targetPosition.z = transform.position.z;
+            rigidBody.velocity = ( targetPosition - transform.position).normalized * moveSpeed;
+        }
+       
     }
 
 
