@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 2bd9ff6e9ca341346991340afe97e1e7
@@ -21,9 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/DungeonRooms/BasementEnd.unity
     guid: f0c8b62acc98b644688c8bac568a69f2
   - enabled: 0
-    path: Assets/Scenes/BasementEmpty.unity
-    guid: 46985b2fbd7c5974db42001b79f5428f
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/BasementEnd.unity
-    guid: 8c566044dd7f80148aedd17dcf398fb0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
