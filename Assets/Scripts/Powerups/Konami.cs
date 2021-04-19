@@ -9,6 +9,7 @@ public class Konami : Powerup
     void Start()
     {
         name = "Konami Code";
+        used = false;
     }
 
     // Update is called once per frame

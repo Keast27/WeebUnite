@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     public float speed;
-    private float velocity;
+    public float velocity;
     public int health;
     Vector2 movement;
 

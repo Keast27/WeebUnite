@@ -8,6 +8,7 @@ public class Wehat : Powerup
     void Start()
     {
         name = "Wehat";
+        used = false;
     }
 
     // Update is called once per frame
