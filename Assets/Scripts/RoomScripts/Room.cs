@@ -30,6 +30,8 @@ public class Room : MonoBehaviour
 
     private bool locked = false;
 
+    public Sprite sideBossDoor;
+
     //Basic Constructor
     public Room(int x, int y)
     {
@@ -84,6 +86,32 @@ public class Room : MonoBehaviour
         {
             RemoveUnconnectedDoors();
             updatedDoors = true;
+
+            //Also change nearby room to show Boss Door
+            if (GetRight() != null)
+            {
+                SpriteRenderer temp = GetRight().leftDoor.GetComponent<SpriteRenderer>();
+                temp.sprite = sideBossDoor;
+                    // = new Color(170f, 255f, 88f, 1f);
+            }
+
+            if (GetLeft() != null)
+            {
+                SpriteRenderer temp = GetLeft().rightDoor.GetComponent<SpriteRenderer>();
+                temp.sprite = sideBossDoor;
+            }
+
+            if (GetTop() != null)
+            {
+                SpriteRenderer temp = GetTop().bottomDoor.GetComponent<SpriteRenderer>();
+                temp.sprite = sideBossDoor;
+            }
+
+            if (GetBottom() != null)
+            {
+                SpriteRenderer temp = GetBottom().topDoor.GetComponent<SpriteRenderer>();
+                temp.sprite = sideBossDoor;
+            }
         }
 
         if (EnemySpawn.instance.enemiesSpawned > 0 && locked == false)

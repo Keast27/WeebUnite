@@ -757,6 +757,10 @@ PrefabInstance:
       propertyPath: sideWall
       value: 
       objectReference: {fileID: 5701369600990469684, guid: 13d13500e892d4c469b7959f15957c10, type: 3}
+    - target: {fileID: 4721492934085680721, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
+      propertyPath: sideBossDoor
+      value: 
+      objectReference: {fileID: 21300000, guid: e45a6ddc0cdc5e849b6531f95ed78ae9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
 --- !u!4 &1216008977 stripped

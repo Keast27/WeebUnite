@@ -15,6 +15,7 @@ public class EnemySpawn : MonoBehaviour
 
     public GameObject catGirl;
     public GameObject fanArtist;
+    public GameObject stan;
 
     void Awake()
     {
@@ -23,7 +24,19 @@ public class EnemySpawn : MonoBehaviour
 
     public void SpawnEnemies(Room room)
     {
+        //Don't Spawn Anything in Start
         if (room.visited || room.name.Contains("Start") == true){ return; }
+        //Spawn Boss in Boss Room
+        else if (room.name.Contains("End") == true)
+        {
+            room.visited = true;
+            for (float i = 0; i < 1; i += .1f)
+            {
+                Instantiate(stan, new Vector3(room.GetRoomCenter().x + i, room.GetRoomCenter().y + i, 0), Quaternion.identity);
+            }
+            enemiesSpawned++;
+            return;
+        }
         else { room.visited = true; }
 
         difficulty++;
