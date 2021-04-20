@@ -16,10 +16,19 @@ public class Room : MonoBehaviour
     public Door topDoor;
     public Door bottomDoor;
 
+    //public Door leftWall;
+    //public Door rightWall;
+    //public Door topWall;
+    //public Door bottomWall;
+
     public GameObject sideWall;
     public GameObject topWall;
 
     public List<Door> doors = new List<Door>();
+
+    public bool visited = false;
+
+    private bool locked = false;
 
     //Basic Constructor
     public Room(int x, int y)
@@ -75,6 +84,16 @@ public class Room : MonoBehaviour
         {
             RemoveUnconnectedDoors();
             updatedDoors = true;
+        }
+
+        if (EnemySpawn.instance.enemiesSpawned > 0 && locked == false)
+        {
+            locked = true;
+            StartCoroutine(LockDoors());
+        }
+        else if (EnemySpawn.instance.enemiesSpawned <= 0 && locked == true)
+        {
+            UnlockDoors();
         }
     }
 
@@ -184,6 +203,74 @@ public class Room : MonoBehaviour
         if (other.tag == "Player")
         {
             RoomController.instance.OnPlayerEnterRoom(this);
+        }
+    }
+
+    //Lock Doors
+    IEnumerator LockDoors()
+    {
+        yield return new WaitForSeconds(.5f);
+
+        locked = true;
+
+        if (GetRight() != null) {
+            GameObject temp = rightDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x + 1, temp.transform.localScale.y + 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(true);
+        }
+
+        if (GetLeft() != null) {
+            GameObject temp = leftDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x + 1, temp.transform.localScale.y + 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(true);
+        }
+
+        if (GetTop() != null) {
+            GameObject temp = topDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x + 1, temp.transform.localScale.y + 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(true);
+        }
+
+        if (GetBottom() != null) {
+            GameObject temp = bottomDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x + 1, temp.transform.localScale.y + 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(true);
+        }
+
+
+    }
+
+    //Unlock Doors
+    public void UnlockDoors()
+    {
+        locked = false;
+
+        if (GetRight() != null)
+        {
+            GameObject temp = rightDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x - 1, temp.transform.localScale.y - 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(false);
+        }
+
+        if (GetLeft() != null)
+        {
+            GameObject temp = leftDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x - 1, temp.transform.localScale.y - 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(false);
+        }
+
+        if (GetTop() != null)
+        {
+            GameObject temp = topDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x - 1, temp.transform.localScale.y - 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(false);
+        }
+
+        if (GetBottom() != null)
+        {
+            GameObject temp = bottomDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x - 1, temp.transform.localScale.y - 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(false);
         }
     }
 }

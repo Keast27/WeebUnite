@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
 
     public void Init(LayerMask layer, Vector2 direction)
     {
-        Physics2D.IgnoreLayerCollision(layer, gameObject.layer);
+        //Physics2D.IgnoreLayerCollision(layer, gameObject.layer);
         this.direction = direction;
         Destroy(gameObject, 1);
     }
@@ -44,14 +44,18 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         //IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
 
         //if (damagable != null)
-            //damagable.DamageAndKnockback(damage, transform.position);
+        //damagable.DamageAndKnockback(damage, transform.position);
 
-        Destroy(gameObject);
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Wall" || other.gameObject.tag == "ReplacementWall")
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private IEnumerator KillProjectile()

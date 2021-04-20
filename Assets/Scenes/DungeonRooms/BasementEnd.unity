@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 98806001}
   m_Layer: 0
   m_Name: bottomWall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -333,7 +333,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!212 &549147881
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 1085422094}
   m_Layer: 0
   m_Name: leftWall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -605,6 +605,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2829823792441724381, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2829823792441724382, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5556729
@@ -620,6 +624,10 @@ PrefabInstance:
     - target: {fileID: 2829823792999644602, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
       propertyPath: m_SortingLayerID
       value: -1011391153
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829823793198020809, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2829823793198020810, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
       propertyPath: m_LocalScale.y
@@ -677,6 +685,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2829823793515942050, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2829823793515942051, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.1100246
@@ -692,6 +704,10 @@ PrefabInstance:
     - target: {fileID: 2829823793903648786, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
       propertyPath: m_SortingLayerID
       value: -1011391153
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829823794095105693, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2829823794095105694, guid: 1982ae5c891420247902cd99dee1294a, type: 3}
       propertyPath: m_LocalScale.y
@@ -1090,7 +1106,7 @@ GameObject:
   - component: {fileID: 1231463057}
   m_Layer: 0
   m_Name: topWall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1286,7 +1302,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!212 &1342574500
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1417,7 +1433,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!212 &1363254315
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1483,7 +1499,7 @@ GameObject:
   - component: {fileID: 1617542658}
   m_Layer: 0
   m_Name: rightWall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1679,7 +1695,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!212 &1724353178
 SpriteRenderer:
   m_ObjectHideFlags: 0
