@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public GameObject target;
+    public PlayerController player;
+
     //projectile's movement vectors
     private Vector3 position;
     public Vector3 direction;
@@ -11,7 +14,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float maxSpeed = 10f;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float accelerationRate = 1.05f;
-    [SerializeField] private float damage = 3f;
+    [SerializeField] private int damage = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,9 @@ public class Projectile : MonoBehaviour
         // You could just do this with Destroy(this, float time)
         //StartCoroutine(KillProjectile());
 
+        target = GameObject.FindGameObjectWithTag("Player");
+        player = target.GetComponent<PlayerController>();
+
         //move towards target
         position += direction * speed * Time.deltaTime;
         transform.position = position;
@@ -51,8 +57,9 @@ public class Projectile : MonoBehaviour
         //if (damagable != null)
         //damagable.DamageAndKnockback(damage, transform.position);
 
-        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Wall" || other.gameObject.tag == "ReplacementWall")
+        if (other.gameObject.tag == "Player")
         {
+            player.health -= damage;
             Destroy(gameObject);
         }
 
