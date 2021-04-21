@@ -17,6 +17,8 @@ public class EnemySpawn : MonoBehaviour
     public GameObject fanArtist;
     public GameObject stan;
 
+    public bool bossSpawned = false;
+
     void Awake()
     {
         instance = this;
@@ -34,6 +36,7 @@ public class EnemySpawn : MonoBehaviour
             {
                 Instantiate(stan, new Vector3(room.GetRoomCenter().x + i, room.GetRoomCenter().y + i, 0), Quaternion.identity);
             }
+            bossSpawned = true;
             enemiesSpawned++;
             return;
         }

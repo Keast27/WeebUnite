@@ -175,6 +175,19 @@ public class RoomController : MonoBehaviour
         EnemySpawn.instance.SpawnEnemies(room);
     }
 
+    public void Reset()
+    {
+
+        currentLoadRoomData = null;
+        loadRoomQueue = new Queue<RoomInfo>();
+        loadedRooms = new List<Room>();
+        isLoadingRoom = false;
+        currentRoom = null;
+
+        spawnedBossRoom = false;
+        updatedRooms = false;
+    }
+
     private void SpawnBossBasedOnLastRoom()
     {
         //Load Boss Room in the Location of the Last Added Room and Delete the Empty Room Placed There
