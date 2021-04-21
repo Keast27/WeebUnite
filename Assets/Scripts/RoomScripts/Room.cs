@@ -76,6 +76,9 @@ public class Room : MonoBehaviour
 
         //Register the Room's Values
         RoomController.instance.RegisterRoom(this);
+
+        //Lock Doors Initially
+        StartCoroutine(LockDoors());
     }
 
     void Update()
@@ -237,7 +240,7 @@ public class Room : MonoBehaviour
     //Lock Doors
     IEnumerator LockDoors()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
 
         locked = true;
 
