@@ -26,13 +26,7 @@ public class PlayerController : MonoBehaviour
     public float nextFire = 3.5F;
     private GameObject newProjectile;
     public float myTime = 0.0F;
-    [SerializeField]  private bool charged = false;
-
-    enum weapons
-    {
-        foamSword,
-        wand
-    }
+    [SerializeField] private bool charged = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +39,32 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-    
+
+
+
+        if (Input.GetButtonDown("Fire3") || Input.GetButton("Fire1"))
+        {
+            myTime = myTime + Time.deltaTime;
+
+            if (myTime > nextFire && !charged)
+            {
+                nextFire = myTime + fireDelta;
+                Debug.Log("CHARGED");
+                charged = true;
+            }
+        }
+        spriteRend.color = Color.white;
+
+        if (Input.GetButtonUp("Fire3") || Input.GetButtonUp("Fire1"))
+        {
+
+            Debug.Log("Hit!!");
+            nextFire = 3.5f;
+            myTime = 0.0F;
+            weaponMoves();
+            charged = false;
+        }
+
     }
 
     private void FixedUpdate()
@@ -60,8 +79,8 @@ public class PlayerController : MonoBehaviour
         }
         */
 
-        
-        }
+
+    }
 
     private void weaponMoves()
     {
@@ -71,7 +90,7 @@ public class PlayerController : MonoBehaviour
                 if (charged)
                 {
                     Debug.Log("Charged Sword Bonk");
-                    
+
                 }
                 else
                 {
@@ -83,7 +102,7 @@ public class PlayerController : MonoBehaviour
                 if (charged)
                 {
                     Debug.Log("PEWPEWPEW");
-                    
+
                 }
                 else
                 {
@@ -91,7 +110,7 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
         }
-        
+
     }
     void move()
     {
