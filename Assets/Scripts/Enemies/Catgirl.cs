@@ -21,21 +21,6 @@ public class Catgirl : Enemy
     void Update()
     {
         base.Update();
-
-        /*
-        pounceTimer += Time.deltaTime;
-
-        if(pounceTimer > 5)
-        {
-            moveSpeed = 0;
-            Attack();
-            if(pounceTimer > 6.5)
-            {
-                moveSpeed = 5;
-                pounceTimer = 0;
-            }
-        }
-        */
     }
 
     
