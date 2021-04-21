@@ -54,6 +54,8 @@ public class FanArtist : Enemy
     public void ShootProjectile()
     {
         Vector2 projectileDirection = target.transform.position - transform.position;
+        //Instantiate(projectile, transform.position, Quaternion.identity);
+
         Projectile newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
 
         // Ignores collision between self and projectile

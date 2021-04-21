@@ -16,10 +16,21 @@ public class Room : MonoBehaviour
     public Door topDoor;
     public Door bottomDoor;
 
+    //public Door leftWall;
+    //public Door rightWall;
+    //public Door topWall;
+    //public Door bottomWall;
+
     public GameObject sideWall;
     public GameObject topWall;
 
     public List<Door> doors = new List<Door>();
+
+    public bool visited = false;
+
+    private bool locked = false;
+
+    public Sprite sideBossDoor;
 
     //Basic Constructor
     public Room(int x, int y)
@@ -65,6 +76,9 @@ public class Room : MonoBehaviour
 
         //Register the Room's Values
         RoomController.instance.RegisterRoom(this);
+
+        //Lock Doors Initially
+        StartCoroutine(LockDoors());
     }
 
     void Update()
@@ -75,6 +89,42 @@ public class Room : MonoBehaviour
         {
             RemoveUnconnectedDoors();
             updatedDoors = true;
+
+            //Also change nearby room to show Boss Door
+            if (GetRight() != null)
+            {
+                SpriteRenderer temp = GetRight().leftDoor.GetComponent<SpriteRenderer>();
+                temp.sprite = sideBossDoor;
+                    // = new Color(170f, 255f, 88f, 1f);
+            }
+
+            if (GetLeft() != null)
+            {
+                SpriteRenderer temp = GetLeft().rightDoor.GetComponent<SpriteRenderer>();
+                temp.sprite = sideBossDoor;
+            }
+
+            if (GetTop() != null)
+            {
+                SpriteRenderer temp = GetTop().bottomDoor.GetComponent<SpriteRenderer>();
+                temp.sprite = sideBossDoor;
+            }
+
+            if (GetBottom() != null)
+            {
+                SpriteRenderer temp = GetBottom().topDoor.GetComponent<SpriteRenderer>();
+                temp.sprite = sideBossDoor;
+            }
+        }
+
+        if (EnemySpawn.instance.enemiesSpawned > 0 && locked == false)
+        {
+            locked = true;
+            StartCoroutine(LockDoors());
+        }
+        else if (EnemySpawn.instance.enemiesSpawned <= 0 && locked == true)
+        {
+            UnlockDoors();
         }
     }
 
@@ -184,6 +234,74 @@ public class Room : MonoBehaviour
         if (other.tag == "Player")
         {
             RoomController.instance.OnPlayerEnterRoom(this);
+        }
+    }
+
+    //Lock Doors
+    IEnumerator LockDoors()
+    {
+        yield return new WaitForSeconds(.2f);
+
+        locked = true;
+
+        if (GetRight() != null) {
+            GameObject temp = rightDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x + 1, temp.transform.localScale.y + 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(true);
+        }
+
+        if (GetLeft() != null) {
+            GameObject temp = leftDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x + 1, temp.transform.localScale.y + 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(true);
+        }
+
+        if (GetTop() != null) {
+            GameObject temp = topDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x + 1, temp.transform.localScale.y + 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(true);
+        }
+
+        if (GetBottom() != null) {
+            GameObject temp = bottomDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x + 1, temp.transform.localScale.y + 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(true);
+        }
+
+
+    }
+
+    //Unlock Doors
+    public void UnlockDoors()
+    {
+        locked = false;
+
+        if (GetRight() != null)
+        {
+            GameObject temp = rightDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x - 1, temp.transform.localScale.y - 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(false);
+        }
+
+        if (GetLeft() != null)
+        {
+            GameObject temp = leftDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x - 1, temp.transform.localScale.y - 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(false);
+        }
+
+        if (GetTop() != null)
+        {
+            GameObject temp = topDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x - 1, temp.transform.localScale.y - 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(false);
+        }
+
+        if (GetBottom() != null)
+        {
+            GameObject temp = bottomDoor.transform.GetChild(0).gameObject;
+            //temp.transform.localScale = new Vector3(temp.transform.localScale.x - 1, temp.transform.localScale.y - 1, temp.transform.localScale.z);
+            temp.gameObject.SetActive(false);
         }
     }
 }

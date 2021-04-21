@@ -172,6 +172,7 @@ public class RoomController : MonoBehaviour
     {
         CameraController.instance.currRoom = room;
         currentRoom = room;
+        EnemySpawn.instance.SpawnEnemies(room);
     }
 
     private void SpawnBossBasedOnLastRoom()

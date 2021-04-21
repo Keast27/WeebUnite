@@ -8,6 +8,8 @@ TagManager:
   - Rooms
   - ReplacementWall
   - Enemy
+  - Wall
+  - Door
   layers:
   - Default
   - TransparentFX

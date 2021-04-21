@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1891659152108874672}
   - component: {fileID: -7049694133397944104}
   - component: {fileID: -4848500549587602264}
+  - component: {fileID: 539923346303680638}
   m_Layer: 0
   m_Name: FanArtist
   m_TagString: Enemy
@@ -49,9 +50,11 @@ MonoBehaviour:
   maxHealth: 10
   canMove: 1
   currFacingRight: 1
-  target: {fileID: 4627885651015001055, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
+  target: {fileID: 0}
+  player: {fileID: 0}
   moveSpeed: 1
   attackRange: 10
+  damageAmount: 5
   previousX: 0
   faceRight: 0
   attackAble: 1
@@ -78,7 +81,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &-4848500549587602264
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -130,3 +133,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &539923346303680638
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6379170560341392858}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0

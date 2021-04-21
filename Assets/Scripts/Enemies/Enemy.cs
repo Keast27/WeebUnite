@@ -21,15 +21,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected bool currFacingRight = true;
 
     public Action onDeath;
-
-
     private Vector3 spawnLocal;
+
     [Header("Base Enemy Properties")]
     public GameObject target;
+    public PlayerController player;
     //[SerializeField] protected State currentState;
 
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float attackRange;
+    [SerializeField] protected int damageAmount;
     [SerializeField] protected float previousX;
 
     [SerializeField] protected bool faceRight = false;
@@ -77,17 +78,27 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         health = maxHealth;
-
         spawnLocal = transform.position;
         previousX = transform.position.x;
 
         TryGetComponent(out rigidBody);
     }
+
+    // Update is called once per frame
+    protected virtual void Update()
+    {
+        //Move();
+        //Flip();
+        target = GameObject.FindGameObjectWithTag("Player");
+        player = target.GetComponent<PlayerController>();
+        AggroMovement();
+    }
+
     //protected virtual void Move() { }
     protected virtual void Attack() { }
-    public virtual void Damage(float damageAmt)
+    public virtual void Damage()
     {
-        Health -= damageAmt;
+        player.health -= damageAmount;
 
         //Debug.Log("DAMAGE DONE TO: "  + gameObject.name);
 
@@ -96,12 +107,6 @@ public class Enemy : MonoBehaviour
     }
 
     public virtual void Die() { onDeath?.Invoke(); }
-
-    public void Hit(float damageAmt, Vector3 attackerPosition)
-    {
-        Damage(damageAmt);
-
-    }
 
     public virtual void Flip()
     {
@@ -135,13 +140,7 @@ public class Enemy : MonoBehaviour
         GetComponent<SpriteRenderer>().color = originalColor;
     }
 
-    // Update is called once per frame
-    protected virtual void Update()
-    {
-        //Move();
-        //Flip();
-        AggroMovement();
-    }
+    
 
 
     //move toward player if in the same room
@@ -159,5 +158,14 @@ public class Enemy : MonoBehaviour
        
     }
 
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Damage();
+            Destroy(this.gameObject);
+            EnemySpawn.instance.enemiesSpawned--;
+        }
+    }
 
 }

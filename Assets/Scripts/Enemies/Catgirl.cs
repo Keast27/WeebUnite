@@ -15,14 +15,15 @@ public class Catgirl : Enemy
     {
         base.Start();
         pounceFinish = true;
+        pounceTime = 0.75f;
     }
-
     // Update is called once per frame
     void Update()
     {
         base.Update();
     }
 
+    
     protected override void AggroMovement()
     {
         if (pounceFinish)
@@ -49,4 +50,5 @@ public class Catgirl : Enemy
             }
         }
     }
+    
 }
