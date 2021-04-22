@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
@@ -10,16 +11,22 @@ public class MenuScript : MonoBehaviour
 
     public GameObject pauseUI;
 
+    public GameObject countUI;
+    public Text countdown;
+    public float countdownTime;
+    private bool countdownDone = false;
+
+    public GameObject player;
 
     void Awake()
     {
         instance = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        countdownTime = 4f;
+        player.SetActive(false);
     }
 
     // Update is called once per frame
@@ -36,6 +43,31 @@ public class MenuScript : MonoBehaviour
             pause = false;
             Time.timeScale = 1;
             pauseUI.SetActive(false);
+        }
+
+        countdownTime -= Time.deltaTime;
+
+        if (countdownTime <= -1 && countdownDone == false)
+        {
+            countdownDone = true;
+            countUI.SetActive(false);
+            player.SetActive(true);
+        }
+        else if (countdownTime <= 0)
+        {
+            countdown.text = "Go!";
+        }
+        else if (countdownTime <= 1)
+        {
+            countdown.text = "1";
+        }
+        else if (countdownTime <= 2)
+        {
+            countdown.text = "2";
+        }
+        else if (countdownTime <= 3 )
+        {
+            countdown.text = "3";
         }
     }
 
