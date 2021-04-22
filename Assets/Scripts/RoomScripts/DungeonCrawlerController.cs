@@ -13,7 +13,7 @@ public enum Direction
 public class DungeonCrawlerController : MonoBehaviour
 {
     public static List<Vector2Int> positionsVisited = new List<Vector2Int>();
-    private static readonly Dictionary<Direction, Vector2Int> directionMovementMap = new Dictionary<Direction, Vector2Int>
+    private static Dictionary<Direction, Vector2Int> directionMovementMap = new Dictionary<Direction, Vector2Int>
     {
         {Direction.up, Vector2Int.up},
         {Direction.left, Vector2Int.left},
@@ -24,6 +24,15 @@ public class DungeonCrawlerController : MonoBehaviour
     //Generate the Randomized Room Locations Based on the Variables Assigned in DungeonGenerationData
     public static List<Vector2Int> GenerateDungeon(DungeonGenerationData dungeonData)
     {
+        positionsVisited = new List<Vector2Int>();
+        directionMovementMap = new Dictionary<Direction, Vector2Int>
+    {
+        {Direction.up, Vector2Int.up},
+        {Direction.left, Vector2Int.left},
+        {Direction.down, Vector2Int.down},
+        {Direction.right, Vector2Int.right},
+    };
+
         List<DungeonCrawler> dungeonCrawlers = new List<DungeonCrawler>();
 
         for (int i = 0; i < dungeonData.numberOfCrawlers; i++)

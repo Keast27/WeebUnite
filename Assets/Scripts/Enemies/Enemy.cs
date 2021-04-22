@@ -87,6 +87,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+
         //Move();
         //Flip();
         target = GameObject.FindGameObjectWithTag("Player");
@@ -163,9 +164,19 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Damage();
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             EnemySpawn.instance.enemiesSpawned--;
+
+            if (EnemySpawn.instance.bossSpawned && EnemySpawn.instance.enemiesSpawned == 0)
+            {
+                MenuScript.instance.Victory();
+            }
         }
+    }
+
+    public void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("exit");
     }
 
 }
