@@ -21,11 +21,11 @@ public class PlayerController : MonoBehaviour
     private weapons selectedWeapon = weapons.foamSword;
 
     public GameObject projectile;
-    public float fireDelta = 0.5F;
+    public float chargeDelta = 0.5F;
 
-    public float nextFire = 3.5F;
+    public float nextCharge = 3.5F;
     private GameObject newProjectile;
-    public float myTime = 0.0F;
+    public float chargeTime = 0.0F;
     [SerializeField] private bool charged = false;
 
     // Start is called before the first frame update
@@ -42,13 +42,13 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (Input.GetButtonDown("Fire3") || Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire3") || Input.GetButton("Fire1"))
         {
-            myTime = myTime + Time.deltaTime;
+            chargeTime = chargeTime + Time.deltaTime;
 
-            if (myTime > nextFire && !charged)
+            if (chargeTime > nextCharge && !charged)
             {
-                nextFire = myTime + fireDelta;
+                nextCharge = chargeTime + chargeDelta;
                 Debug.Log("CHARGED");
                 charged = true;
             }
@@ -59,8 +59,8 @@ public class PlayerController : MonoBehaviour
         {
 
             Debug.Log("Hit!!");
-            nextFire = 3.5f;
-            myTime = 0.0F;
+            nextCharge = 3.5f;
+            chargeTime = 0.0F;
             weaponMoves();
             charged = false;
         }
