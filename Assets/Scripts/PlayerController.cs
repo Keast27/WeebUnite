@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private GameObject newProjectile;
     public float chargeTime = 0.0F;
     [SerializeField] private bool charged = false;
+    bool faceRight = true;
     Powerup PU;
 
     int dir = 1;
@@ -129,10 +130,20 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis("Horizontal") < 0)
         {
             dir = -1;
+            if (faceRight)
+            {
+                transform.Rotate(0, 180, 0);
+                faceRight = false;
+            }
         }
         else if (Input.GetAxis("Horizontal") > 0)
         {
             dir = 1;
+            if (!faceRight)
+            {
+                transform.Rotate(0, 180, 0);
+                faceRight = true;
+            }
         }
     }
     void move()
