@@ -10,17 +10,49 @@ public class Catgirl : Enemy
     private bool pounceFinish;
     public float pounceTimer;
     private Vector2 pouncePos;
+    public BoxCollider2D collider;
+    public Vector2 colliderBaseSize;
+    public float colliderTimer = 2f;
+
+    public float stunTimer = 2f;
+    public float playerBaseSpeed;
+    private bool gotSpeed = false;
 
     void Start()
     {
         base.Start();
         pounceFinish = true;
         pounceTime = 0.75f;
+
+        collider = this.GetComponent<BoxCollider2D>();
+        colliderBaseSize = collider.size;
     }
     // Update is called once per frame
     void Update()
     {
         base.Update();
+        stunTimer += Time.deltaTime;
+        colliderTimer += Time.deltaTime;
+
+        if (!gotSpeed)
+        {
+            GetPlayerSpeed();
+        }
+
+        if(stunTimer <= 0.5f)
+        {
+            player.speed = 0f;
+        }
+        else
+        {
+            player.speed = playerBaseSpeed;
+        }
+
+        if(colliderTimer >= 0.25f)
+        {
+            collider.size = colliderBaseSize;
+        }
+
     }
 
     
@@ -33,6 +65,7 @@ public class Catgirl : Enemy
             // Jump every second
             if (pounceTimer > 1)
             {
+                moveSpeed = 5;
                 // Get a random number and then jump anywhere from 50 to 75 % to the player
                 float ran_jump = Random.Range(.5f, 1.0f);
                 pouncePos = ran_jump * (new Vector3(target.transform.position.x, target.transform.position.y + 0.35f, target.transform.position.z) - transform.position) + transform.position;
@@ -44,11 +77,30 @@ public class Catgirl : Enemy
                 // Activate the tween once which will restart the jumping at the end
                 LeanTween.move(gameObject, pouncePos, pounceTime).setEase(LeanTweenType.easeInOutCubic).setOnComplete(() =>
                 {
+                    moveSpeed = 0;
                     pounceFinish = true;
+                    Attack();
                     //animator.SetBool("hopfinish", true);
                 });
             }
         }
     }
-    
+
+    protected override void Attack()
+    {
+        collider.size = new Vector2(1f, 1f);
+        colliderTimer = 0f;
+    }
+
+    public override void Damage()
+    {
+        base.Damage();
+        stunTimer = 0f;
+    }
+
+    private void GetPlayerSpeed()
+    {
+        playerBaseSpeed = player.speed;
+        gotSpeed = true;
+    }
 }

@@ -20,10 +20,12 @@ public class FanArtist : Enemy
     // Update is called once per frame
     void Update()
     {
+        /*
         if (MenuScript.instance.pause)
         {
             return;
         }
+        */
         base.Update();
 
         attackTimer += Time.deltaTime;
