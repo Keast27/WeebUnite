@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public float velocity;
     public int health;
     Vector2 movement;
-    private weapons selectedWeapon = weapons.foamSword;
+    public weapons selectedWeapon;
 
     public GameObject projectile;
     public float chargeDelta = 0.5F;
@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     public float chargeTime = 0.0F;
     [SerializeField] private bool charged = false;
 
+    int dir = 1;
+    public float bulletSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
 
 
         if (Input.GetButton("Fire3") || Input.GetButton("Fire1"))
@@ -102,11 +103,20 @@ public class PlayerController : MonoBehaviour
                 if (charged)
                 {
                     Debug.Log("PEWPEWPEW");
+                    int theta = 0;
+                    for (int i = 0; i < 6; i++)
+                    {
+                        GameObject bullet = Instantiate(projectile, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
 
+                        bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed * Mathf.Cos(theta), bulletSpeed * Mathf.Sin(theta));
+                        theta += 45;
+                    }
                 }
                 else
                 {
                     Debug.Log("pew");
+                    GameObject bullet = Instantiate(projectile, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
+                    bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(dir * bulletSpeed, 0);
                 }
                 break;
         }

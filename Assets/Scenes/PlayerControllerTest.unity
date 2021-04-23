@@ -265,6 +265,18 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4627885651015001052, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1444813001004494435, guid: f85955aa97b560c4ebd8a48e0bc5fe39, type: 3}
+    - target: {fileID: 4627885651015001052, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
+      propertyPath: bulletSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627885651015001052, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
+      propertyPath: selectedWeapon
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4627885651015001055, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
       propertyPath: m_Name
       value: Player
