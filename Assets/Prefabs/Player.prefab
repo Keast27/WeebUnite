@@ -718,11 +718,13 @@ MonoBehaviour:
   speed: 10
   velocity: 0
   health: 100
-  projectile: {fileID: 0}
-  fireDelta: 0.5
-  nextFire: 3.5
-  myTime: 0
+  selectedWeapon: 0
+  projectile: {fileID: 1444813001004494435, guid: f85955aa97b560c4ebd8a48e0bc5fe39, type: 3}
+  chargeDelta: 0.5
+  nextCharge: 3.5
+  chargeTime: 0
   charged: 0
+  bulletSpeed: 10
 --- !u!50 &4627885651015001043
 Rigidbody2D:
   serializedVersion: 4
