@@ -81,16 +81,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         move();
-        /*
-        if (Input.GetButtonUp("Fire3") || Input.GetButtonUp("Fire1"))
-        {
-            Debug.Log("I hope I'm good at programming");
-            spriteRend.color = Color.cyan;
-            weaponMoves();
-        }
-        */
-
-
+        flip();
     }
 
     private void weaponMoves()
@@ -131,6 +122,18 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
+    }
+
+    void flip()
+    {
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            dir = -1;
+        }
+        else if (Input.GetAxis("Horizontal") > 0)
+        {
+            dir = 1;
+        }
     }
     void move()
     {
