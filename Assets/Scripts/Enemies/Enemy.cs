@@ -164,7 +164,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Damage();
-            //Destroy(gameObject);
+            Destroy(gameObject);
             EnemySpawn.instance.enemiesSpawned--;
 
             if (EnemySpawn.instance.bossSpawned && EnemySpawn.instance.enemiesSpawned == 0)
