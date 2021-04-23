@@ -6,6 +6,7 @@ public abstract class Powerup: MonoBehaviour
 {
     public string name;
     public bool used;
+    public List<Powerup> powerups = new List<Powerup>();
     public string Name
     {
         get { return name; }
@@ -28,4 +29,24 @@ public abstract class Powerup: MonoBehaviour
     }
 
     public abstract void Use();
+
+    public void SpawnNew()
+    {
+        int rand = Random.Range(1, 12);
+        switch(rand)
+        {
+            case 1:
+                Powerup crunchyroll = new CrunchyRoll();
+                powerups.Add(crunchyroll);
+                break;
+            case 2:
+                Powerup ship = new Ship();
+                powerups.Add(ship);
+                break;
+            case 3:
+                Powerup wehat = new Wehat();
+                powerups.Add(wehat);
+                break;
+        }
+    }
 }
