@@ -191,6 +191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Catgirl
       objectReference: {fileID: 0}
+    - target: {fileID: 6379214377903695459, guid: 485bd58e1aed3de4b91999fd48905ccd, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8925445997656385871, guid: 485bd58e1aed3de4b91999fd48905ccd, type: 3}
       propertyPath: m_RootOrder
       value: 1

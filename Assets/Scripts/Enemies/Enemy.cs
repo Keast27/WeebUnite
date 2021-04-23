@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ public class Enemy : MonoBehaviour
 
     protected Color32 onHitColor = Color.red;
     protected float hitColorDuration = 0.07f;
+
+    Powerup PU;
 
     [SerializeField] protected bool canMove = true;
 
@@ -90,6 +93,7 @@ public class Enemy : MonoBehaviour
 
         //Move();
         //Flip();
+        PU = gameObject.GetComponent<Powerup>();
         target = GameObject.FindGameObjectWithTag("Player");
         player = target.GetComponent<PlayerController>();
         AggroMovement();
@@ -107,7 +111,11 @@ public class Enemy : MonoBehaviour
         StartCoroutine(FlashDamageColor());
     }
 
-    public virtual void Die() { onDeath?.Invoke(); }
+    public virtual void Die() 
+    {
+        PU.SpawnNew();
+        onDeath?.Invoke(); 
+    }
 
     public virtual void Flip()
     {
