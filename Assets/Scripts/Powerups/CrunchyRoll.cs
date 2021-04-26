@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CrunchyRoll : Powerup
 {
-    public PlayerController pc;
+    PlayerController pc;
     // Start is called before the first frame update
     void Start()
     {
+
         name = "Crunchy Roll";
         used = false;
         
@@ -16,7 +17,7 @@ public class CrunchyRoll : Powerup
     // Update is called once per frame
     void Update()
     {
-       
+        pc = gameObject.GetComponent<PlayerController>();
     }
 
     public override void Use()

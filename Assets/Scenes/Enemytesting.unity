@@ -134,10 +134,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FanArtist
       objectReference: {fileID: 0}
-    - target: {fileID: 6379170560341392858, guid: ac5378c6981b0204aa874fad3e292472, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7970406186567794654, guid: ac5378c6981b0204aa874fad3e292472, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -194,10 +190,6 @@ PrefabInstance:
     - target: {fileID: 1528055704609100324, guid: 485bd58e1aed3de4b91999fd48905ccd, type: 3}
       propertyPath: m_Name
       value: Catgirl
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528055704609100324, guid: 485bd58e1aed3de4b91999fd48905ccd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6379214377903695459, guid: 485bd58e1aed3de4b91999fd48905ccd, type: 3}
       propertyPath: m_AngularDrag
@@ -339,10 +331,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4420939777181582723, guid: cefb8f9ecc1a34d45a818bdedba828fa, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4755288952688372414, guid: cefb8f9ecc1a34d45a818bdedba828fa, type: 3}
       propertyPath: m_Name
       value: Stan
@@ -443,10 +431,6 @@ PrefabInstance:
     - target: {fileID: 4627885651015001042, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4627885651015001052, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
-      propertyPath: selectedWeapon
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4627885651015001055, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
       propertyPath: m_Name
