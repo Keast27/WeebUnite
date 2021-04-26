@@ -27,8 +27,11 @@ public class PlayerController : MonoBehaviour
     private GameObject newProjectile;
     public float chargeTime = 0.0F;
     [SerializeField] private bool charged = false;
-    bool faceRight = true;
-    Powerup PU;
+    bool faceRight = true;   
+
+    public Powerup PU;
+    public bool isStunned;
+    private float stunTimer;
 
     int dir = 1;
     public float bulletSpeed;
@@ -45,9 +48,9 @@ public class PlayerController : MonoBehaviour
         PU = gameObject.GetComponent<Powerup>();
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if(Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2"))
         {
-            if(PU.powerups.Count>0)
+            if (PU.powerups.Count > 0)
             {
                 PU.powerups[0].Use();
                 PU.powerups.RemoveAt(0);
