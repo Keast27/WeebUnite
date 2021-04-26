@@ -12,6 +12,7 @@ TagManager:
   - Door
   - Bullet
   - HitBox
+  - Event
   layers:
   - Default
   - TransparentFX
