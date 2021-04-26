@@ -54,12 +54,17 @@ MonoBehaviour:
   player: {fileID: 0}
   moveSpeed: 5
   attackRange: 1
-  damageAmount: 7
+  damageAmount: 1
   previousX: 0
   faceRight: 0
   attackAble: 1
   pounceTime: 0
   pounceTimer: 0
+  collider: {fileID: 0}
+  colliderBaseSize: {x: 0, y: 0}
+  colliderTimer: 2
+  stunTimer: 2
+  playerBaseSpeed: 0
 --- !u!212 &-525061746517592230
 SpriteRenderer:
   m_ObjectHideFlags: 0

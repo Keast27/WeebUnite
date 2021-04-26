@@ -11,12 +11,16 @@ public class MenuScript : MonoBehaviour
 
     public GameObject pauseUI;
 
+    public RawImage[] hearts;
+    private int previousHealth = 6;
+
     public GameObject countUI;
     public Text countdown;
     public float countdownTime;
     private bool countdownDone = false;
 
     public GameObject player;
+    public PlayerController playerScript;
 
     void Awake()
     {
@@ -32,6 +36,13 @@ public class MenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Handle Player Health
+        if (playerScript.health != previousHealth)
+        {
+            HandleHealth();
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Escape) && pause == false)
         {
             pause = true;
@@ -71,9 +82,54 @@ public class MenuScript : MonoBehaviour
         }
     }
 
+    public void HandleHealth()
+    {
+        //If Player's Health is Full
+        if (playerScript.health >= 6)
+        {
+            foreach (RawImage h in hearts)
+            {
+                h.gameObject.SetActive(true);
+            }
+
+            return;
+        }
+
+        //If Player's Health is Empty
+        if (playerScript.health <= 0)
+        {
+            foreach (RawImage h in hearts)
+            {
+                h.gameObject.SetActive(false);
+            }
+
+            GameOver();
+
+            return;
+        }
+
+        //Otherwise...
+        for (int i = playerScript.health; i < hearts.Length; i++)
+        {
+            hearts[i].gameObject.SetActive(false);
+        }
+
+        for (int i = playerScript.health; i < 0; i--)
+        {
+            hearts[i].gameObject.SetActive(true);
+        }
+
+        previousHealth = playerScript.health;
+    }
+
     public void Victory()
     {
         SceneManager.LoadScene("Victory");
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 
     public void PlayAgain()

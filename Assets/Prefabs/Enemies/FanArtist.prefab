@@ -54,7 +54,7 @@ MonoBehaviour:
   player: {fileID: 0}
   moveSpeed: 1
   attackRange: 10
-  damageAmount: 5
+  damageAmount: 1
   previousX: 0
   faceRight: 0
   attackAble: 1
