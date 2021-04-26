@@ -24,8 +24,9 @@ public class Catgirl : Enemy
         pounceFinish = true;
         pounceTime = 0.75f;
 
-        collider = this.GetComponent<BoxCollider2D>();
-        colliderBaseSize = collider.size;
+        collider = this.GetComponentInChildren<BoxCollider2D>();// = this.GetComponent<BoxCollider2D>();
+        //colliderBaseSize = collider.size;
+        collider.enabled = false;
     }
     // Update is called once per frame
     void Update()
@@ -46,11 +47,12 @@ public class Catgirl : Enemy
         else
         {
             player.speed = playerBaseSpeed;
+            player.isStunned = false;
         }
 
         if(colliderTimer >= 0.25f)
         {
-            collider.size = colliderBaseSize;
+            collider.enabled = false;
         }
 
     }
@@ -78,6 +80,7 @@ public class Catgirl : Enemy
                 LeanTween.move(gameObject, pouncePos, pounceTime).setEase(LeanTweenType.easeInOutCubic).setOnComplete(() =>
                 {
                     moveSpeed = 0;
+                    player.isStunned = true;
                     pounceFinish = true;
                     Attack();
                     //animator.SetBool("hopfinish", true);
@@ -88,8 +91,9 @@ public class Catgirl : Enemy
 
     protected override void Attack()
     {
-        collider.size = new Vector2(1f, 1f);
-        colliderTimer = 0f;
+        //collider.size = new Vector2(1f, 1f);
+        //colliderTimer = 0f;
+        collider.enabled = true;
     }
 
     public override void Damage()
@@ -103,4 +107,7 @@ public class Catgirl : Enemy
         playerBaseSpeed = player.speed;
         gotSpeed = true;
     }
+
+
+
 }

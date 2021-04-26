@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Powerup: MonoBehaviour
+public class Powerup: MonoBehaviour
 {
     public string name;
     public bool used;
-    public List<Powerup> powerups = new List<Powerup>();
+    public List<Powerup> powerups;
     public string Name
     {
         get { return name; }
@@ -19,7 +19,7 @@ public abstract class Powerup: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        powerups = new List<Powerup>();
     }
 
     // Update is called once per frame
@@ -28,7 +28,10 @@ public abstract class Powerup: MonoBehaviour
         
     }
 
-    public abstract void Use();
+    public virtual void Use()
+    {
+
+    }
 
     public void SpawnNew()
     {
