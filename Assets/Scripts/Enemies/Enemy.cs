@@ -16,8 +16,6 @@ public class Enemy : MonoBehaviour
     protected Color32 onHitColor = Color.red;
     protected float hitColorDuration = 0.07f;
 
-    Powerup PU;
-
     [SerializeField] protected bool canMove = true;
 
     // Is this entity facing right by default
@@ -29,6 +27,7 @@ public class Enemy : MonoBehaviour
     [Header("Base Enemy Properties")]
     public GameObject target;
     public PlayerController player;
+    public Powerup PU;
     //[SerializeField] protected State currentState;
 
     [SerializeField] protected float moveSpeed;
@@ -93,7 +92,6 @@ public class Enemy : MonoBehaviour
 
         //Move();
         //Flip();
-        PU = gameObject.GetComponent<Powerup>();
         target = GameObject.FindGameObjectWithTag("Player");
         player = target.GetComponent<PlayerController>();
         AggroMovement();

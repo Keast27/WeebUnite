@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Powerup: MonoBehaviour
+public class Powerup: MonoBehaviour
 {
     public string name;
     public bool used;
@@ -28,7 +28,10 @@ public abstract class Powerup: MonoBehaviour
         
     }
 
-    public abstract void Use();
+    public virtual void Use()
+    {
+
+    }
 
     public void SpawnNew()
     {
