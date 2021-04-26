@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - Door
   - Bullet
+  - HitBox
   layers:
   - Default
   - TransparentFX

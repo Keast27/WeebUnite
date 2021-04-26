@@ -45,38 +45,51 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-        if (Input.GetButtonDown("Fire2"))
+        if (!isStunned)
         {
-            if (PU.powerups.Count > 0)
+            movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+            if (Input.GetButtonDown("Fire2"))
             {
-                PU.powerups[0].Use();
-                PU.powerups.RemoveAt(0);
+                if (PU.powerups.Count > 0)
+                {
+                    PU.powerups[0].Use();
+                    PU.powerups.RemoveAt(0);
+                }
+            }
+
+            if (Input.GetButton("Fire3") || Input.GetButton("Fire1"))
+            {
+                chargeTime = chargeTime + Time.deltaTime;
+
+                if (chargeTime > nextCharge && !charged)
+                {
+                    nextCharge = chargeTime + chargeDelta;
+                    Debug.Log("CHARGED");
+                    charged = true;
+                }
+            }
+            spriteRend.color = Color.white;
+
+            if (Input.GetButtonUp("Fire3") || Input.GetButtonUp("Fire1"))
+            {
+
+                Debug.Log("Hit!!");
+                nextCharge = 3.5f;
+                chargeTime = 0.0F;
+                weaponMoves();
+                charged = false;
             }
         }
 
-        if (Input.GetButton("Fire3") || Input.GetButton("Fire1"))
+        if (isStunned)
         {
-            chargeTime = chargeTime + Time.deltaTime;
-
-            if (chargeTime > nextCharge && !charged)
+            stunTimer += Time.deltaTime;
+            if(stunTimer >= 1)
             {
-                nextCharge = chargeTime + chargeDelta;
-                Debug.Log("CHARGED");
-                charged = true;
+                isStunned = false;
+                stunTimer = 0f;
             }
-        }
-        spriteRend.color = Color.white;
-
-        if (Input.GetButtonUp("Fire3") || Input.GetButtonUp("Fire1"))
-        {
-
-            Debug.Log("Hit!!");
-            nextCharge = 3.5f;
-            chargeTime = 0.0F;
-            weaponMoves();
-            charged = false;
         }
 
     }

@@ -10,8 +10,9 @@ public class Catgirl : Enemy
     private bool pounceFinish;
     public float pounceTimer;
     private Vector2 pouncePos;
-    public BoxCollider2D collider;
-    public Vector2 colliderBaseSize;
+    public BoxCollider2D childCollider;
+    public BoxCollider2D childeCollider;
+    //public Vector2 colliderBaseSize;
     public float colliderTimer = 2f;
 
     public float stunTimer = 2f;
@@ -24,8 +25,9 @@ public class Catgirl : Enemy
         pounceFinish = true;
         pounceTime = 0.75f;
 
-        collider = this.GetComponent<BoxCollider2D>();
-        colliderBaseSize = collider.size;
+        childCollider = GetComponentInChildren<BoxCollider2D>();
+        childeCollider = GameObject.FindWithTag("HitBox").GetComponent<BoxCollider2D>();
+        //colliderBaseSize = collider.size;
     }
     // Update is called once per frame
     void Update()
@@ -41,7 +43,7 @@ public class Catgirl : Enemy
 
         if(stunTimer <= 0.5f)
         {
-            player.speed = 0f;
+            //player.speed = 0f;
         }
         else
         {
@@ -50,7 +52,7 @@ public class Catgirl : Enemy
 
         if(colliderTimer >= 0.25f)
         {
-            collider.size = colliderBaseSize;
+            childeCollider.enabled = false;
         }
 
     }
@@ -88,7 +90,7 @@ public class Catgirl : Enemy
 
     protected override void Attack()
     {
-        collider.size = new Vector2(1f, 1f);
+        childeCollider.enabled = true;
         colliderTimer = 0f;
     }
 

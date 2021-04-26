@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Door")
+        if ((collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Door") && collision.gameObject.tag !="HitBox")
         {
             Debug.Log("Shot " + collision.name);
             Destroy(gameObject);
