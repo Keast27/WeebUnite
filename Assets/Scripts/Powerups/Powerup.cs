@@ -7,6 +7,7 @@ public class Powerup: MonoBehaviour
     public string name;
     public bool used;
     public List<Powerup> powerups = new List<Powerup>();
+    public static Powerup instance;
     public string Name
     {
         get { return name; }
@@ -19,7 +20,7 @@ public class Powerup: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame

@@ -27,7 +27,6 @@ public class Enemy : MonoBehaviour
     [Header("Base Enemy Properties")]
     public GameObject target;
     public PlayerController player;
-    public Powerup PU;
     //[SerializeField] protected State currentState;
 
     [SerializeField] protected float moveSpeed;
@@ -111,7 +110,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die() 
     {
-        PU.SpawnNew();
         onDeath?.Invoke(); 
     }
 
@@ -172,7 +170,7 @@ public class Enemy : MonoBehaviour
             Damage();
             Destroy(gameObject);
             EnemySpawn.instance.enemiesSpawned--;
-
+            Powerup.instance.SpawnNew();
             if (EnemySpawn.instance.bossSpawned && EnemySpawn.instance.enemiesSpawned == 0)
             {
                 MenuScript.instance.Victory();
