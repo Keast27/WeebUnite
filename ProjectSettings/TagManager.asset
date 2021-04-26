@@ -10,7 +10,7 @@ TagManager:
   - Enemy
   - Wall
   - Door
-  - Bullet
+  - Event
   layers:
   - Default
   - TransparentFX
