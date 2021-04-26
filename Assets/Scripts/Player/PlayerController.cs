@@ -56,7 +56,9 @@ public class PlayerController : MonoBehaviour
             PU = gameObject.GetComponent<Powerup>();
             movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-            if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if (PU.powerups.Count > 0)
             {
                 if (PU.powerups.Count > 0)
                 {
