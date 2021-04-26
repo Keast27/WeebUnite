@@ -27,8 +27,12 @@ public class PlayerController : MonoBehaviour
     private GameObject newProjectile;
     public float chargeTime = 0.0F;
     [SerializeField] private bool charged = false;
+<<<<<<< Updated upstream:Assets/Scripts/Player/PlayerController.cs
     bool faceRight = true;
     Powerup PU;
+=======
+    public Powerup PU;
+>>>>>>> Stashed changes:Assets/Scripts/PlayerController.cs
 
     int dir = 1;
     public float bulletSpeed;
@@ -42,15 +46,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PU = gameObject.GetComponent<Powerup>();
+        
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         if(Input.GetButtonDown("Fire2"))
         {
-            if(PU.powerups.Count>0)
+            if (PU.powerups != null)
             {
-                PU.powerups[0].Use();
-                PU.powerups.RemoveAt(0);
+                if (PU.powerups.Count > 0)
+                {
+                    PU.powerups[0].Use();
+                    PU.powerups.RemoveAt(0);
+                }
             }
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ship : Powerup
 {
-    PlayerController pc;
+    public PlayerController pc;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,7 @@ public class Ship : Powerup
     // Update is called once per frame
     void Update()
     {
-        pc = gameObject.GetComponent<PlayerController>();
+        
     }
 
     public override void Use()
