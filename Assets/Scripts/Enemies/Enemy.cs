@@ -168,11 +168,16 @@ public class Enemy : MonoBehaviour
        
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
+       Debug.Log("something");
         if (other.gameObject.tag == "Player")
         {
             Damage();
+        }
+
+        if(other.gameObject.tag == "Bullet")
+        {
             Destroy(gameObject);
             EnemySpawn.instance.enemiesSpawned--;
 
@@ -180,6 +185,8 @@ public class Enemy : MonoBehaviour
             {
                 MenuScript.instance.Victory();
             }
+
+            Destroy(other.gameObject);
         }
     }
 
