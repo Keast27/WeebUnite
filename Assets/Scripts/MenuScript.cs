@@ -24,6 +24,8 @@ public class MenuScript : MonoBehaviour
 
     public bool inGame = true;
 
+    public bool bossDefeated = false;
+
     void Awake()
     {
         instance = this;
@@ -41,6 +43,11 @@ public class MenuScript : MonoBehaviour
         if (!inGame)
         {
             return;
+        }
+
+        if (bossDefeated)
+        {
+            Victory();
         }
 
         //Handle Player Health

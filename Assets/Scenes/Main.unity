@@ -262,7 +262,9 @@ MonoBehaviour:
   catGirl: {fileID: 1528055704609100324, guid: 485bd58e1aed3de4b91999fd48905ccd, type: 3}
   fanArtist: {fileID: 6379170560341392858, guid: ac5378c6981b0204aa874fad3e292472, type: 3}
   stan: {fileID: 4755288952688372414, guid: cefb8f9ecc1a34d45a818bdedba828fa, type: 3}
+  bossBoi: {fileID: 4641455207165480684, guid: c466df656a56b3f4696a6b901174035c, type: 3}
   bossSpawned: 0
+  bossRoom: {fileID: 0}
 --- !u!4 &90993715
 Transform:
   m_ObjectHideFlags: 0
@@ -1075,7 +1077,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.4745098, g: 0.19215688, b: 0.45822984, a: 0}
+  m_BackGroundColor: {r: 0.69803923, g: 0.81568635, b: 0.7176471, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1234,6 +1236,8 @@ MonoBehaviour:
   countdownTime: 0
   player: {fileID: 1906084483}
   playerScript: {fileID: 1906084486}
+  inGame: 1
+  bossDefeated: 0
 --- !u!114 &893247328
 MonoBehaviour:
   m_ObjectHideFlags: 0

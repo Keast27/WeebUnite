@@ -16,8 +16,11 @@ public class EnemySpawn : MonoBehaviour
     public GameObject catGirl;
     public GameObject fanArtist;
     public GameObject stan;
+    public GameObject bossBoi;
 
     public bool bossSpawned = false;
+
+    public Room bossRoom = null;
 
     void Awake()
     {
@@ -31,12 +34,10 @@ public class EnemySpawn : MonoBehaviour
         //Spawn Boss in Boss Room
         else if (room.name.Contains("End") == true)
         {
+            bossRoom = room;
             room.visited = true;
-            for (float i = 0; i < 1; i += .1f)
-            {
-                Instantiate(stan, new Vector3(room.GetRoomCenter().x + i, room.GetRoomCenter().y + i, 0), Quaternion.identity);
-                enemiesSpawned++;
-            }
+            Instantiate(bossBoi, new Vector3(room.GetRoomCenter().x, room.GetRoomCenter().y + (room.height / 4), 0), Quaternion.identity);
+            enemiesSpawned++;
             bossSpawned = true;
             return;
         }
@@ -51,7 +52,7 @@ public class EnemySpawn : MonoBehaviour
 
         for (int i = 0; i < numOfEnemies; i++)
         {
-            int temp = Random.Range(1, 3);
+            int temp = Random.Range(1, 4);
 
             float tempX = Random.Range((room.x * room.width) + (room.width / 2) - 1, (room.x * room.width) - (room.width / 2) + 1);
             float tempY = Random.Range((room.y * room.height) + (room.height / 2) - 1, (room.y * room.height) - (room.height / 2) + 1);
@@ -63,6 +64,7 @@ public class EnemySpawn : MonoBehaviour
                     enemiesSpawned++;
                     break;
                 case 2:
+                case 3:
                     Instantiate(fanArtist, new Vector3(tempX, tempY, 0), Quaternion.identity);
                     enemiesSpawned++;
                     break;

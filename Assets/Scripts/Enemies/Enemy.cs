@@ -163,7 +163,7 @@ public class Enemy : MonoBehaviour
        
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -175,10 +175,6 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
             EnemySpawn.instance.enemiesSpawned--;
             Powerup.instance.SpawnNew();
-            if (EnemySpawn.instance.bossSpawned && EnemySpawn.instance.enemiesSpawned == 0)
-            {
-                MenuScript.instance.Victory();
-            }
 
             Destroy(other.gameObject);
         }

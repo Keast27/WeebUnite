@@ -50,7 +50,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         //IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
 
