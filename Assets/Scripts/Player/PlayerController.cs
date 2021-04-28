@@ -27,11 +27,16 @@ public class PlayerController : MonoBehaviour
     private GameObject newProjectile;
     public float chargeTime = 0.0F;
     [SerializeField] private bool charged = false;
+
     bool faceRight = true;   
 
     public Powerup PU;
     public bool isStunned;
     private float stunTimer;
+
+    //bool faceRight = true;
+    //Powerup PU;
+    //public Powerup PU;
 
     int dir = 1;
     public float bulletSpeed;

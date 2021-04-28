@@ -35,9 +35,9 @@ public class EnemySpawn : MonoBehaviour
             for (float i = 0; i < 1; i += .1f)
             {
                 Instantiate(stan, new Vector3(room.GetRoomCenter().x + i, room.GetRoomCenter().y + i, 0), Quaternion.identity);
+                enemiesSpawned++;
             }
             bossSpawned = true;
-            enemiesSpawned++;
             return;
         }
         else { room.visited = true; }

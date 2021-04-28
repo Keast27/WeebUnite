@@ -22,6 +22,8 @@ public class MenuScript : MonoBehaviour
     public GameObject player;
     public PlayerController playerScript;
 
+    public bool inGame = true;
+
     void Awake()
     {
         instance = this;
@@ -36,6 +38,11 @@ public class MenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!inGame)
+        {
+            return;
+        }
+
         //Handle Player Health
         if (playerScript.health != previousHealth)
         {

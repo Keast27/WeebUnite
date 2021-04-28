@@ -636,6 +636,7 @@ MonoBehaviour:
   countdownTime: 0
   player: {fileID: 0}
   playerScript: {fileID: 0}
+  inGame: 0
 --- !u!114 &1587810334
 MonoBehaviour:
   m_ObjectHideFlags: 0
