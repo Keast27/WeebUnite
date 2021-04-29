@@ -27,11 +27,14 @@ public class BossBoi : Enemy
     public int maxNotes = 3;
     public int notesFired = 0;
 
+    public float stunTimer = 0f;
+    //public float playerSpeed = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
         base.Start();
+        //playerSpeed = player.speed;
     }
 
     // Update is called once per frame
@@ -50,6 +53,17 @@ public class BossBoi : Enemy
         if (!musicNotes && !shockwave && !summonArmy)
         {
             timer += Time.deltaTime;
+        }
+
+        //Update Stun Timer
+        if (stunTimer > 0)
+        {
+            stunTimer -= Time.deltaTime;
+        }
+        else
+        {
+            player.isStunned = false;
+            player.speed = 10;
         }
 
         //Select Attack
@@ -95,12 +109,13 @@ public class BossBoi : Enemy
         }
         if (shockwave)
         {
+            stunTimer = 1f;
             transform.GetChild(0).gameObject.SetActive(true);
             shockwave = false;
         }
         if(summonArmy)
         {
-            SummonArmy();
+            //SummonArmy();
             summonArmy = false;
         }
     }

@@ -574,5 +574,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossBoi
       objectReference: {fileID: 0}
+    - target: {fileID: 4641455207165480685, guid: c466df656a56b3f4696a6b901174035c, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1530437135}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c466df656a56b3f4696a6b901174035c, type: 3}

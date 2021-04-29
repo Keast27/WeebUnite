@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class BossShockwave : MonoBehaviour
 {
-    public PlayerController player;
+    //public PlayerController player;
 
     public float speed = .5f;
+
+    public BossBoi bossScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        bossScript = GetComponentInParent<BossBoi>();
     }
 
     // Update is called once per frame
@@ -30,7 +32,10 @@ public class BossShockwave : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player.health--;
+            bossScript.player.health--;
+            bossScript.player.isStunned = true;
+            bossScript.player.speed = 0f;
+            bossScript.stunTimer = 1f;
             ResetSize();
         }
 
