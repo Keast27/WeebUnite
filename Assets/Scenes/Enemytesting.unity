@@ -394,7 +394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1528055704609100324, guid: 485bd58e1aed3de4b91999fd48905ccd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3922293352974851422, guid: 485bd58e1aed3de4b91999fd48905ccd, type: 3}
       propertyPath: m_IsActive
@@ -573,6 +573,10 @@ PrefabInstance:
     - target: {fileID: 4641455207165480684, guid: c466df656a56b3f4696a6b901174035c, type: 3}
       propertyPath: m_Name
       value: BossBoi
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641455207165480684, guid: c466df656a56b3f4696a6b901174035c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4641455207165480685, guid: c466df656a56b3f4696a6b901174035c, type: 3}
       propertyPath: player

@@ -10,6 +10,8 @@ public class Catgirl : Enemy
     private bool pounceFinish;
     public float pounceTimer;
     private Vector2 pouncePos;
+    public GameObject childObject;
+    public BoxCollider2D thisCollider;
     public BoxCollider2D childCollider;
     public BoxCollider2D childeCollider;
     //public Vector2 colliderBaseSize;
@@ -25,8 +27,9 @@ public class Catgirl : Enemy
         pounceFinish = true;
         pounceTime = 0.75f;
 
-        childCollider = GetComponentInChildren<BoxCollider2D>();
-        childeCollider = GameObject.FindWithTag("HitBox").GetComponent<BoxCollider2D>();
+        thisCollider = this.GetComponent<BoxCollider2D>();
+        childObject = transform.GetChild(0).gameObject;
+        childeCollider = childObject.GetComponent<BoxCollider2D>();
         //colliderBaseSize = collider.size;
     }
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class Catgirl : Enemy
         base.Update();
         stunTimer += Time.deltaTime;
         colliderTimer += Time.deltaTime;
+        thisCollider.enabled = true;
 
         if (!gotSpeed)
         {
@@ -62,6 +66,7 @@ public class Catgirl : Enemy
     {
         if (pounceFinish)
         {
+            
             pounceTimer += Time.deltaTime;
 
             // Jump every second
@@ -82,6 +87,7 @@ public class Catgirl : Enemy
                     moveSpeed = 0;
                     pounceFinish = true;
                     Attack();
+
                     //animator.SetBool("hopfinish", true);
                 });
             }
@@ -96,7 +102,7 @@ public class Catgirl : Enemy
 
     public override void Damage()
     {
-        base.Damage();
+        //base.Damage();
         stunTimer = 0f;
     }
 
