@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9663df794d3e6d48b6d7f3a931ce0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4627885651015001052, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
   speed: 0.05
+  bossScript: {fileID: 0}
 --- !u!1 &4641455207165480684
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46df42e29e052bb41becd2b9df81da14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
-  maxHealth: 10
+  health: 100
+  maxHealth: 100
   canMove: 0
   currFacingRight: 1
   target: {fileID: 0}
@@ -285,8 +285,8 @@ MonoBehaviour:
   summonArmy: 0
   musicNotes: 0
   stan: {fileID: 4755288952688372414, guid: cefb8f9ecc1a34d45a818bdedba828fa, type: 3}
-  timeBetweenAttacks: 10
-  timeBetweenBullets: 2
+  timeBetweenAttacks: 3
+  timeBetweenBullets: 1
   x1: 3
   x2: 6
   y: 3
@@ -294,3 +294,4 @@ MonoBehaviour:
   timer: 0
   maxNotes: 3
   notesFired: 0
+  stunTimer: 0

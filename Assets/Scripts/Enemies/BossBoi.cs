@@ -115,7 +115,7 @@ public class BossBoi : Enemy
         }
         if(summonArmy)
         {
-            //SummonArmy();
+            SummonArmy();
             summonArmy = false;
         }
     }

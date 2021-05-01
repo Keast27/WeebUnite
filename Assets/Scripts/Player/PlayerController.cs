@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public float chargeDelta = 0.5F;
 
     public float nextCharge = 3.5F;
+    public float previousNextCharge = 3.5f;
     private GameObject newProjectile;
     public float chargeTime = 0.0F;
     [SerializeField] private bool charged = false;
@@ -58,8 +59,12 @@ public class PlayerController : MonoBehaviour
             {
                 if (PU.powerups.Count > 0)
                 {
-                    PU.powerups[0].Use();
-                    PU.powerups.RemoveAt(0);
+                    if (Powerup.instance.selectedIndex < 5 && Powerup.instance.selectedIndex >= 0)
+                    {
+                        UsePowerUp(Powerup.instance.selectedIndex);
+                        Powerup.instance.indexBackground[Powerup.instance.selectedIndex].gameObject.SetActive(false);
+                        Powerup.instance.selectedIndex = 0;
+                    }
                 }
             }
 
@@ -80,7 +85,7 @@ public class PlayerController : MonoBehaviour
             {
 
                 Debug.Log("Hit!!");
-                nextCharge = 3.5f;
+                nextCharge = previousNextCharge;
                 chargeTime = 0.0F;
                 weaponMoves();
                 charged = false;
@@ -170,5 +175,28 @@ public class PlayerController : MonoBehaviour
     {
         velocity = speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + movement * velocity);
+    }
+
+    public void UsePowerUp(int index)
+    {
+        Powerup powerupScript = PU.powerups[index].GetComponent<Powerup>();
+        powerupScript.Use();
+
+        //for (int i = index; i < Powerup.instance.powerups.Count - 1; i++)
+        //{
+        //
+        //    Powerup.instance.powerUpUI[index].image.sprite = Powerup.instance.powerUpUI[index + 1].image.sprite;
+        //
+        //}
+
+        PU.powerups.RemoveAt(index);
+        Powerup.instance.powerUpUISprites.RemoveAt(index);
+        Powerup.instance.powerUpUI[PU.powerups.Count].gameObject.SetActive(false);
+
+        //Reset Sprites
+        for (int i = 0; i < Powerup.instance.powerUpUISprites.Count; i++)
+        {
+            Powerup.instance.powerUpUI[i].image.sprite = Powerup.instance.powerUpUISprites[i];
+        }
     }
 }

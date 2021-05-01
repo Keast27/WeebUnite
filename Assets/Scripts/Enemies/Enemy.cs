@@ -174,7 +174,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             EnemySpawn.instance.enemiesSpawned--;
-            Powerup.instance.SpawnNew();
+            Powerup.instance.SpawnNew(transform.position);
 
             Destroy(other.gameObject);
         }
