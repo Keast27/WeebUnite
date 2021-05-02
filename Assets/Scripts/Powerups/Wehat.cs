@@ -10,7 +10,7 @@ public class Wehat : Powerup
     {
         name = "Wehat";
         used = false;
-        infoText = "It is said that the mystical creature known as the Wehat can help you to overthrow even the toughest enemies. Charge Time Down!";
+        infoText = "It is said that the mystical creature known as the Wehat can help you to overthrow even the toughest enemies. Charge Time Down Temporarily!";
         SpriteRenderer temp = gameObject.GetComponent<SpriteRenderer>();
         mySprite = temp.sprite;
     }
@@ -75,6 +75,11 @@ public class Wehat : Powerup
             }
 
             Powerup.instance.powerups.Add(gameObject);
+
+            if (!MenuScript.instance.instructions.isActiveAndEnabled)
+            {
+                MenuScript.instance.instructions.gameObject.SetActive(true);
+            }
         }
     }
 }

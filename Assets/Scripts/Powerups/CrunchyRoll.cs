@@ -77,6 +77,11 @@ public class CrunchyRoll : Powerup
 
                 Powerup.instance.powerups.Add(gameObject);
             }
+
+            if (!MenuScript.instance.instructions.isActiveAndEnabled)
+            {
+                MenuScript.instance.instructions.gameObject.SetActive(true);
+            }
         }
     }
 

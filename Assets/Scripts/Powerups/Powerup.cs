@@ -49,14 +49,6 @@ public class Powerup: MonoBehaviour
     void Update()
     {
 
-        if (powerups.Count <= 0)
-        {
-            for (int i = 0; i < indexBackground.Count; i++)
-            {
-                indexBackground[i].gameObject.SetActive(false);
-            }
-        }
-
         //Cycle Through The Avaliable PowerUps
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

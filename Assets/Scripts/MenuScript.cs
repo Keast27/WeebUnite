@@ -12,8 +12,9 @@ public class MenuScript : MonoBehaviour
     public GameObject pauseUI;
     public GameObject powerUpInfoUI;
     public Text powerUpInfoText;
+    public Text instructions;
 
-    public RawImage[] hearts;
+public RawImage[] hearts;
     private int previousHealth = 6;
 
     public GameObject countUI;
