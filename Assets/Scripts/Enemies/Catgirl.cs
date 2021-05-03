@@ -10,8 +10,11 @@ public class Catgirl : Enemy
     private bool pounceFinish;
     public float pounceTimer;
     private Vector2 pouncePos;
-    public BoxCollider2D collider;
-    public Vector2 colliderBaseSize;
+    public GameObject childObject;
+    public BoxCollider2D thisCollider;
+    public BoxCollider2D childCollider;
+    public BoxCollider2D childeCollider;
+    //public Vector2 colliderBaseSize;
     public float colliderTimer = 2f;
 
     public float stunTimer = 2f;
@@ -24,8 +27,10 @@ public class Catgirl : Enemy
         pounceFinish = true;
         pounceTime = 0.75f;
 
-        collider = this.GetComponent<BoxCollider2D>();
-        colliderBaseSize = collider.size;
+        thisCollider = this.GetComponent<BoxCollider2D>();
+        childObject = transform.GetChild(0).gameObject;
+        childeCollider = childObject.GetComponent<BoxCollider2D>();
+        //colliderBaseSize = collider.size;
     }
     // Update is called once per frame
     void Update()
@@ -33,6 +38,7 @@ public class Catgirl : Enemy
         base.Update();
         stunTimer += Time.deltaTime;
         colliderTimer += Time.deltaTime;
+        thisCollider.enabled = true;
 
         if (!gotSpeed)
         {
@@ -41,7 +47,7 @@ public class Catgirl : Enemy
 
         if(stunTimer <= 0.5f)
         {
-            player.speed = 0f;
+            //player.speed = 0f;
         }
         else
         {
@@ -50,7 +56,7 @@ public class Catgirl : Enemy
 
         if(colliderTimer >= 0.25f)
         {
-            collider.size = colliderBaseSize;
+            childeCollider.enabled = false;
         }
 
     }
@@ -60,6 +66,7 @@ public class Catgirl : Enemy
     {
         if (pounceFinish)
         {
+            
             pounceTimer += Time.deltaTime;
 
             // Jump every second
@@ -80,6 +87,7 @@ public class Catgirl : Enemy
                     moveSpeed = 0;
                     pounceFinish = true;
                     Attack();
+
                     //animator.SetBool("hopfinish", true);
                 });
             }
@@ -88,13 +96,13 @@ public class Catgirl : Enemy
 
     protected override void Attack()
     {
-        collider.size = new Vector2(1f, 1f);
+        childeCollider.enabled = true;
         colliderTimer = 0f;
     }
 
     public override void Damage()
     {
-        base.Damage();
+        //base.Damage();
         stunTimer = 0f;
     }
 

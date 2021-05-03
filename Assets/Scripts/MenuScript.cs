@@ -10,8 +10,11 @@ public class MenuScript : MonoBehaviour
     public bool pause = false;
 
     public GameObject pauseUI;
+    public GameObject powerUpInfoUI;
+    public Text powerUpInfoText;
+    public Text instructions;
 
-    public RawImage[] hearts;
+public RawImage[] hearts;
     private int previousHealth = 6;
 
     public GameObject countUI;
@@ -21,6 +24,10 @@ public class MenuScript : MonoBehaviour
 
     public GameObject player;
     public PlayerController playerScript;
+
+    public bool inGame = true;
+
+    public bool bossDefeated = false;
 
     void Awake()
     {
@@ -36,6 +43,16 @@ public class MenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!inGame)
+        {
+            return;
+        }
+
+        if (bossDefeated)
+        {
+            Victory();
+        }
+
         //Handle Player Health
         if (playerScript.health != previousHealth)
         {
@@ -114,13 +131,30 @@ public class MenuScript : MonoBehaviour
             hearts[i].gameObject.SetActive(false);
         }
 
-        for (int i = playerScript.health; i < 0; i--)
+        for (int i = playerScript.health - 1; i > 0; i--)
         {
             hearts[i].gameObject.SetActive(true);
         }
 
         previousHealth = playerScript.health;
     }
+
+    public IEnumerator DisplayPowerUpInfo(Sprite sprite, string text)
+    {
+        powerUpInfoUI.gameObject.SetActive(true);
+
+        GameObject tempSpriteObject = powerUpInfoUI.transform.GetChild(1).gameObject;
+        //GameObject tempTextObject = powerUpInfoUI.transform.GetChild(2).gameObject;
+
+        tempSpriteObject.GetComponent<Button>().image.sprite = sprite;
+        //Text temp = tempSpriteObject.GetComponent<Text>();
+        powerUpInfoText.text = text;
+
+        yield return new WaitForSeconds(5f);
+
+        powerUpInfoUI.gameObject.SetActive(false);
+    }
+
 
     public void Victory()
     {

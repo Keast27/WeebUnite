@@ -27,7 +27,6 @@ public class Enemy : MonoBehaviour
     [Header("Base Enemy Properties")]
     public GameObject target;
     public PlayerController player;
-    public Powerup PU;
     //[SerializeField] protected State currentState;
 
     [SerializeField] protected float moveSpeed;
@@ -111,7 +110,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die() 
     {
-        PU.SpawnNew();
         onDeath?.Invoke(); 
     }
 
@@ -165,18 +163,20 @@ public class Enemy : MonoBehaviour
        
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
+    public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
             Damage();
+        }
+
+        if (other.gameObject.tag == "Bullet")
+        {
             Destroy(gameObject);
             EnemySpawn.instance.enemiesSpawned--;
+            Powerup.instance.SpawnNew(transform.position);
 
-            if (EnemySpawn.instance.bossSpawned && EnemySpawn.instance.enemiesSpawned == 0)
-            {
-                MenuScript.instance.Victory();
-            }
+            Destroy(other.gameObject);
         }
     }
 
