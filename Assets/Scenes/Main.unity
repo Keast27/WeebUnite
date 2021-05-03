@@ -512,6 +512,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4627885651015001042, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627885651015001042, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627885651015001042, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -561,6 +569,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4627885651015001052, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
       propertyPath: selectedWeapon
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627885651015001053, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
+      propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4627885651015001055, guid: bb579a39901661b40bf7c02e50fe9736, type: 3}
