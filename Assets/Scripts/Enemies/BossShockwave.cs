@@ -19,7 +19,7 @@ public class BossShockwave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.localScale.x >= 12)
+        if (transform.localScale.x >= 10)
         {
             ResetSize();
         }

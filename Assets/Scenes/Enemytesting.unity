@@ -587,9 +587,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4641455207165480685, guid: c466df656a56b3f4696a6b901174035c, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641455207165480685, guid: c466df656a56b3f4696a6b901174035c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1530437135}
+    - target: {fileID: 4641455207165480685, guid: c466df656a56b3f4696a6b901174035c, type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4641455207165480685, guid: c466df656a56b3f4696a6b901174035c, type: 3}
       propertyPath: timeBetweenAttacks
       value: 5

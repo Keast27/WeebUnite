@@ -9,7 +9,7 @@ public class Ship : Powerup
     {
         name = "Ship";
         used = false;
-        infoText = "Let the wind fill your sails and maybe your ship never sink! Speed Up Temporarily!";
+        infoText = "Let the wind fill your sails and may your ship never sink! Speed Up Temporarily!";
         SpriteRenderer temp = gameObject.GetComponent<SpriteRenderer>();
         mySprite = temp.sprite;
     }
@@ -74,6 +74,7 @@ public class Ship : Powerup
             if (!MenuScript.instance.instructions.isActiveAndEnabled)
             {
                 MenuScript.instance.instructions.gameObject.SetActive(true);
+                MenuScript.instance.instructionsBackground.gameObject.SetActive(true);
             }
         }
     }

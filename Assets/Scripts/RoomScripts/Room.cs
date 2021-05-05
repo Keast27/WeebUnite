@@ -240,7 +240,7 @@ public class Room : MonoBehaviour
     //Lock Doors
     IEnumerator LockDoors()
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.1f);
 
         locked = true;
 

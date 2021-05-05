@@ -13,8 +13,11 @@ public class MenuScript : MonoBehaviour
     public GameObject powerUpInfoUI;
     public Text powerUpInfoText;
     public Text instructions;
+    public RawImage instructionsBackground;
 
-public RawImage[] hearts;
+    public GameObject resourcePage;
+
+    public RawImage[] hearts;
     private int previousHealth = 6;
 
     public GameObject countUI;
@@ -36,7 +39,7 @@ public RawImage[] hearts;
 
     void Start()
     {
-        countdownTime = 4f;
+        countdownTime = 11f;
         player.SetActive(false);
     }
 
@@ -96,6 +99,34 @@ public RawImage[] hearts;
         else if (countdownTime <= 3 )
         {
             countdown.text = "3";
+        }
+        else if (countdownTime <= 4)
+        {
+            countdown.text = "4";
+        }
+        else if (countdownTime <= 5)
+        {
+            countdown.text = "5";
+        }
+        else if (countdownTime <= 6)
+        {
+            countdown.text = "6";
+        }
+        else if (countdownTime <= 7)
+        {
+            countdown.text = "7";
+        }
+        else if (countdownTime <= 8)
+        {
+            countdown.text = "8";
+        }
+        else if (countdownTime <= 9)
+        {
+            countdown.text = "9";
+        }
+        else if (countdownTime <= 10)
+        {
+            countdown.text = "10";
         }
     }
 
@@ -169,6 +200,18 @@ public RawImage[] hearts;
     public void PlayAgain()
     {
         SceneManager.LoadScene("Main");
+    }
+
+    public void Resources()
+    {
+        if (resourcePage.activeInHierarchy)
+        {
+            resourcePage.SetActive(false);
+        }
+        else
+        {
+            resourcePage.SetActive(true);
+        }
     }
 
     public void Quit()

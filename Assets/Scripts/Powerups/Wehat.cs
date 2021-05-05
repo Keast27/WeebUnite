@@ -79,6 +79,7 @@ public class Wehat : Powerup
             if (!MenuScript.instance.instructions.isActiveAndEnabled)
             {
                 MenuScript.instance.instructions.gameObject.SetActive(true);
+                MenuScript.instance.instructionsBackground.gameObject.SetActive(true);
             }
         }
     }
