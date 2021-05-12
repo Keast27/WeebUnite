@@ -430,7 +430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &109998520
 RectTransform:
   m_ObjectHideFlags: 0
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7735849, g: 0.7437969, b: 0.068600886, a: 1}
+  m_Color: {r: 0.3529412, g: 0.36862746, b: 0.8352941, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1202,8 +1202,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624, y: 460.6}
-  m_SizeDelta: {x: 49.47, y: 85.5}
+  m_AnchoredPosition: {x: -624, y: 454.75}
+  m_SizeDelta: {x: 49.47, y: 97.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &552980319
 CanvasRenderer:
@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ceb6e78e71ce1ef4d97f77bdcc7fea59, type: 3}
+  m_Texture: {fileID: 2800000, guid: 37ad20bca0f3da74fa2c3a9dec856644, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1764,8 +1764,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -838.77, y: 462.09}
-  m_SizeDelta: {x: 49.47, y: 85.5}
+  m_AnchoredPosition: {x: -838.77, y: 456.24}
+  m_SizeDelta: {x: 49.47, y: 97.195}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &757291283
 CanvasRenderer:
@@ -1795,7 +1795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ceb6e78e71ce1ef4d97f77bdcc7fea59, type: 3}
+  m_Texture: {fileID: 2800000, guid: 37ad20bca0f3da74fa2c3a9dec856644, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1946,7 +1946,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 3869d497dc3eb9a42a03e1213236ff80, type: 3}
+  m_Texture: {fileID: 2800000, guid: b130b0c4d327ff74095a37e3549bfb60, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2372,7 +2372,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "WASD/Arrow Keys - Movement\nSpace - Shoot\n1-5 - Select a powerup \nQ
-    - Use the selcted powerup"
+    - Use the selected powerup"
 --- !u!222 &888874044
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2713,7 +2713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 3869d497dc3eb9a42a03e1213236ff80, type: 3}
+  m_Texture: {fileID: 2800000, guid: b130b0c4d327ff74095a37e3549bfb60, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2959,7 +2959,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 3869d497dc3eb9a42a03e1213236ff80, type: 3}
+  m_Texture: {fileID: 2800000, guid: b130b0c4d327ff74095a37e3549bfb60, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3550,8 +3550,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -731.8, y: 462.09}
-  m_SizeDelta: {x: 49.47, y: 85.5}
+  m_AnchoredPosition: {x: -731.63, y: 456.24}
+  m_SizeDelta: {x: 49.47, y: 97.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1667168339
 CanvasRenderer:
@@ -3581,7 +3581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ceb6e78e71ce1ef4d97f77bdcc7fea59, type: 3}
+  m_Texture: {fileID: 2800000, guid: 37ad20bca0f3da74fa2c3a9dec856644, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e500a2e028e9f7140a31cc5b9117f6f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55977799eb3f17042ae70d434c4955a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,8 +146,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   used: 0
+  infoText: 
+  mySprite: {fileID: 0}
   powerups: []
   weHat: {fileID: 0}
   ship: {fileID: 0}
   crunchyRoll: {fileID: 0}
   pc: {fileID: 0}
+  powerUpUI: []
+  powerUpUISprites: []
+  indexBackground: []
+  weHatFirstTime: 0
+  crunchyRollFirstTime: 0
+  shipFirstTime: 0
+  selectedIndex: 0
+  useTime: 5
