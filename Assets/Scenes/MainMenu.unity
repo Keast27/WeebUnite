@@ -918,10 +918,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -929,8 +929,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The game over screen is a modified version of the lose screen from 94 World
-    Cup Soccer on the Sega Master System.
+  m_Text: 'The game over screen is a modified version of the lose screen from 94
+    World Cup Soccer on the Sega Master System.
+
+
+    Audio is royalty free from
+    tandess.com
+
+    (https://www.tandess.com/en/music/free-material/data/fighter_short.html)'
 --- !u!222 &1321053798
 CanvasRenderer:
   m_ObjectHideFlags: 0

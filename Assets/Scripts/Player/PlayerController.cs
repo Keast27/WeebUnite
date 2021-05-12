@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     public bool isStunned;
     private float stunTimer;
 
+    public AudioSource music;
+
     //bool faceRight = true;
     //Powerup PU;
     //public Powerup PU;
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         spriteRend = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        music.Play();
     }
 
     // Update is called once per frame
